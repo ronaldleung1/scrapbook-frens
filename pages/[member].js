@@ -84,6 +84,8 @@ export async function getServerSideProps({ params, res }) {
     "https://scrapbook.hackclub.com/api/users/"+params.member
   ).then((r) => r.json());
   console.log(user);
+  if (user.status === 404)
+    return { props: {}, notFound: true };
   return {
     props: { user },
   };
