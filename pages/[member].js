@@ -7,7 +7,7 @@ export default function Home(props) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{props.user.profile.username} | Scrapbook Frens</title>
+        <title>@{props.user.profile.username} | Scrapbook Frens</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
@@ -36,7 +36,7 @@ export default function Home(props) {
               >
                 <img src={fren.avatar} className={styles.avatarsm} />
                 <h3>
-                  @{fren.username}
+                  <Link href={"/"+fren.username}>{'@'+fren.username}</Link>
                   {/*fren.webring.map((frn) => {
                     if(frn == fren.id)
                       return;
