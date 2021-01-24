@@ -37,7 +37,8 @@
 
 .title a,
 .description a,
-.card a {
+.card a,
+.link {
   color: #ec3750;
   text-decoration: none;
 }
@@ -59,7 +60,10 @@
 .description a:active,
 .card a:hover,
 .card a:focus,
-.card a:active {
+.link:active,
+.link:hover,
+.link:focus,
+.link:active {
   text-decoration: underline;
 }
 
