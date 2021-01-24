@@ -37,10 +37,6 @@ export default function Home(props) {
                 <img src={fren.avatar} className={styles.avatarsm} />
                 <h3>
                   <Link href={"/"+fren.username}>{'@'+fren.username}</Link>
-                  {/*fren.webring.map((frn) => {
-                    if(frn == fren.id)
-                      return;
-                  })*/}
                   {fren.webring.filter(f => f == props.user.profile.id)[0]
                     && <span className={styles.muted}> ∞</span>}
                 </h3>
@@ -87,14 +83,9 @@ export async function getServerSideProps({ params, res }) {
   let user = await fetch(
     "https://scrapbook.hackclub.com/api/users/"+params.member
   ).then((r) => r.json());
-  /*let ringUsers = users.filter(u => u.webring.length != 0);
-  let user = ringUsers[Math.floor(Math.random() * ringUsers.length)];
-  
-  let frens = user.webring.map((fren) => {
-    return users.filter(u => u.id == fren)[0];
-  });*/
   console.log(user);
-  //console.log(frens);
+  if (user.status === 404)
+    return { props: {}, notFound: true };
   return {
     props: { user },
   };
