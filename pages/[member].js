@@ -61,6 +61,12 @@ export default function Home(props) {
             )
           })}
         </div>
+        {props.user.webring.length === 0 && 
+          <>
+            <p className={styles.muted} style={{marginBottom: 0}}>Looks like they haven't added any frens to their Scrapbook yet :(</p>
+            <p className={styles.link}><Link href="/">Find other Hack Clubbers</Link></p>
+          </>
+        }
       </main>
       <footer className={styles.footer}>
         Scrapbook frens, built by&nbsp;<a href="http://scrapbook.hackclub.com/googol/">@Googol</a>!
