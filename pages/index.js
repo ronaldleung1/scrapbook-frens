@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from 'next/link';
 import styles from "../styles/Home.module.css";
 import fetch from "isomorphic-unfetch";
 
@@ -35,13 +36,9 @@ export default function Home(props) {
               >
                 <img src={fren.avatar} className={styles.avatarsm} />
                 <h3>
-                  @{fren.username}
-                  {/*fren.webring.map((frn) => {
-                    if(frn == fren.id)
-                      return;
-                  })*/}
-                  {fren.webring.filter(f => f == props.user.id)[0]
-                    && <span className={styles.muted}> ∞</span>}
+                <Link href={"/"+fren.username}>{"@"+fren.username}</Link>
+                {fren.webring.filter(f => f == props.user.id)[0]
+                  && <span className={styles.muted}> ∞</span>}
                 </h3>
                 <p>
                   <a href={"https://scrapbook.hackclub.com/" + fren.username}>Scrapbook</a>
